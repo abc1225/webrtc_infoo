@@ -1,0 +1,122 @@
+
+
+开源软件：
+1. mediasoup
+2. Janus
+3. BigBlueButton
+4. kurento ***
+
+https://github.com/Kurento/kurento-media-server
+
+5 Apache Openmeetings
+6. licode
+
+
+Kablink Conferencing 是一个开源的会议软件，团队可以通过它进行实时的通讯，与会者可以看到其他在线的人员并启动及时会议，会议可使用音频、聊天、白板、桌面共享和演示等功能。
+
+http://openmeetings.apache.org/downloads.html
+https://github.com/openmeetings
+
+
+资料汇总
+https://blog.csdn.net/fei33423/article/details/79996334
+26款 网络会议/视频会议开源软件
+https://blog.csdn.net/u013488847/article/details/46452969
+
+
+
+多人视频方案介绍(2015)
+http://www.cnblogs.com/lingyunhu/p/rtc28.html
+
+
+方案一：
+
+基于Webrtc和Janus的多人视频会议系统开发1--系统架构
+
+
+我们开始研发自研的连麦系统，作为技术方案来说，现今支持浏览器直连基本上已经是刚需，所以webrtc是必须要兼容的，所以技术方案设计上决定是以webrtc协议为基础，支持多人会议，完全从0开始做不可取，经过对现有开源框架的研究比较后，决定在janus方案的基础上研发并逐步改进以符合需要，本系列文章就是对整改系统的研发过程的记录和总结，供大家参考。
+
+
+虽然有些劣势，不过做为第一阶段尽快出成果来说，这个方案是比较合适的，只需要少量的工作即可看到成功：
+
+1. 调度服务器，先实现简单的案容量来调度以及房间服务器的映射查询；
+
+2.Janus服务器改造，上报自身状况，供调度服务器调度决策
+
+3. Janus客服端SDK，当前Janus提供了web接入，android和ios接入demo代码，都能顺利连通，很遗憾的是翻遍整个网络，没有找到windows和Mac下的c++接入demo， 所以这块是先阶段的重点和难点，因为我们的产品windows原生客户端是很重要的一环。
+
+调度服务器和Janus服务器状态上报都很简单在此不多讲，后续几篇文章主要讲如何开发windows和mac下的原生c++的janus客户端SDK.
+
+1. https://blog.csdn.net/u011382962/article/details/81504789
+
+
+
+
+方案二
+
+http://webrtc.org.cn/20180817-webrtc-video-js/
+
+如何使用WebRTC和Kurento媒体服务器,来建立视频会议App(一)  
+
+
+方案三
+https://blog.csdn.net/qq654129588/article/details/81583139
+【WebRTC】自己做一个简单的sfu视频通讯demo
+
+mediasoup
+
+
+
+方案四   ViMeet
+https://blog.csdn.net/zhangbijun1230/article/details/81749271
+2，基于相关webrtc流服务开源改造如Licode之类,ViMeet选型相关改造，节省了大量时间。
+
+
+方案5 实践解析：Electron实现跨平台视频会议的几种思路
+实践解析：Electron实现跨平台视频会议的几种思路
+
+
+开源：
+
+https://github.com/lzming9511/webrtc
+
+
+打造自己的视频会议系统 GGMeeting（附送源码）
+http://www.cnblogs.com/justnow/p/4487201.html
+
+
+小众方案 （闭源）
+https://blog.csdn.net/elesos/article/details/79278513
+
+
+
+第三方 收费方案  Zego
+https://blog.csdn.net/sinat_20146421/article/details/81814252
+
+Zego视频通话解决方案支持多人至百万人视频通话，满足语音视频社交、在线教育和培训、视频会议和远程医疗等场景，兼容iOS、Android、H5、Windows、macOS等环境。
+
+Zego视频通话解决方案主要优点
+
+1、超低延迟
+
+全球范围延迟100ms，跨国跨网毫无障碍;
+
+2、流畅不卡顿
+
+针对休闲或运动场景优化，保障音画同步且流畅;
+
+3、高清视频
+
+1080P高清画质，多种分辨率切换，自动适应网络状况;
+
+4、设备兼容
+
+深度优化的软件编解码技术，兼容5000+手机终端，支持硬件加速;
+
+5、全球覆盖
+
+全世界覆盖无死角，国内外覆盖无差别;
+
+6、码率自适应
+
+准确估算网络带宽，码率和分辨率能自动适应网络情况的变化进行调节。
