@@ -1,15 +1,114 @@
 
+使用集成方案
+
+Rocket.Chat 开源IM系统部署
+
+Rocket.Chat 是特性最丰富的 Slack 开源替代品之一。
+
+主要功能：群组聊天，直接通信，私聊群，桌面通知，媒体嵌入，链接预览，文件上传，语音/视频 聊天，截图等等。Rocket.Chat 原生支持 Windows，Mac OS X ，Linux，iOS 和 Android 平台。Rocket.Chat 通过 hubot 集成了非常流行的服务，比如 GitHub，GitLab，Confluence，JIRA 等等。
+
+高级的特性包括：OTR 消息，XMPP 多用户聊天，Kerberos 认证，p2p 文件分享等等。
+
+以下教程是在 CentOS Linux release 7.2.1511 (Core) 下安装 Rocket.Chat，可以通过官方教程安装在这里：Deploying Rocket.Chat on Centos 7。
+
+主要依赖三个工具 Nginx、CentOS 7、Mongodb
+
+
+
+
+
+
+最具参考价值
+
+WebRTC Experiments & Demos (各种功能分类开源Demo)
+https://www.webrtc-experiment.com/
+
+最具参考用户 muaz-khan 巴基斯坦人
+https://github.com/muaz-khan/RTCMultiConnection
+（项目大全）
+https://github.com/muaz-khan/WebRTC-Experiment  
+
+
+Mesh 方案
+https://github.com/muaz-khan/RTCMultiConnection/blob/master/docs/ios-android.md
+
+Android Mesh 实现源码
+https://webrtcweb.com/cordova-apps/video-conferencing/
+http://www.rtcmulticonnection.org/docs/Write-Android-Apps/
+
+IOS Mesh 实现方法
+https://www.rtcmulticonnection.org/docs/Write-iOS-Apps/
+
 
 开源软件：
 1. mediasoup
 2. Janus
 3. BigBlueButton
-4. kurento ***
+4 Apache Openmeetings
 
+
+MCU 方案:   
+
+licode     kurento
+https://github.com/lynckia/licode
 https://github.com/Kurento/kurento-media-server
 
-5 Apache Openmeetings
-6. licode
+licode
+主要模块及实现语言：
+1.Erizo：MCU模块，实现语言C++
+2.erizoAPI：Node.js addon wrapper for Erizo，实现语言C++
+3.erizo_controller：跟Rooms管理相关的服务，实现语言JS
+4.nuve：跟Rooms管理相关的API，实现语言JS
+
+接口（SDK）语言：
+Client API: Javascript
+Sercer API: node.js
+
+优点：
+接口简洁，服务轻量级，支持h264
+缺点：
+API文档比较简单且其他文档较少；客户端接口只有js的，没有android和IOS原生API；不是很稳定，经常中断
+
+
+Kurento
+主要模块及实现语言：
+Kurento media server：KMS流媒体服务器，实现语言C++
+接口（SDK）语言：
+服务端SDK：java，node.js
+客户端SDK：java，js
+支持Json-Rpc
+
+优点：
+文档齐全，功能、封装API都比较齐全，对Android和IOS也有原生API支持，支持h264
+缺点：
+bug较多，不是很稳定，接口太多，所以使用起来相对复杂，Android和IOS缺少官方demo，因其中增加了视觉增强等图像处理功能，所以会有视频延迟风险
+
+
+
+
+
+
+
+SFU 方案   
+
+jitsi(非WebRTC实现, 兼容WebRtc标准)
+Janus （除了作为GateWay 可以被当做SFU来使用）
+https://github.com/jitsi/jitsi
+
+功能（官方原文翻译）：
+不像其他的视频会议技术，Jitsi Videobridge是jitsi的核心，将所有人的音视频传送给所有的参与者，而不是将他们混起来
+能达到更低的延迟，更高的质量，并且如果你运行你自己的服务，这将是一个非常便于扩展和廉价的解决方案
+Jitsi完全兼容webRTC这个开放的web通信标准
+Jitsi支持高级的视频路由功能，比如同步广播、带宽检测、可扩展的视频编码等
+Jitsi是用java和一些原生代码编写
+接口（SDK）语言：
+Libjitsi：java接口SDK，用于服务端开发
+lib-jitsi-meet：javascript接口SDK，用于web客户端的开发
+优点：
+比较稳定，家族产品较多，即时通讯，电子白板，文件共享都有。2017年8月发布android和IOS原生API接口。
+缺点：
+协议用的是SIP和XMPP，编译部署过程过于复杂，依赖库较多，且文档比较少。缺少android和IOS的demo和文档。多人对讲时采用的是单路分发机制，对服务器网络等要求较高。
+
 
 
 Kablink Conferencing 是一个开源的会议软件，团队可以通过它进行实时的通讯，与会者可以看到其他在线的人员并启动及时会议，会议可使用音频、聊天、白板、桌面共享和演示等功能。
@@ -18,11 +117,37 @@ http://openmeetings.apache.org/downloads.html
 https://github.com/openmeetings
 
 
+
+GateWay实现点对多点方案
+Janus WebRTC Server
+https://github.com/meetecho/janus-gateway
+
+
+
+
+Mesh方案的实现
+https://www.cnblogs.com/cther/p/4614391.html
+
+
 资料汇总
 https://blog.csdn.net/fei33423/article/details/79996334
+https://www.cnblogs.com/lidabo/category/1002914.html
+
+所有开源WebRTC项目简介
+http://webrtc.org.cn/link/#medias
+
+开源库链接
+https://blog.csdn.net/zzuzzl/article/details/81534324
+
+官方web实例
+https://webrtc.github.io/samples/
+
 26款 网络会议/视频会议开源软件
 https://blog.csdn.net/u013488847/article/details/46452969
 
+
+测试
+https://testrtc.com/
 
 
 多人视频方案介绍(2015)
@@ -93,30 +218,5 @@ https://blog.csdn.net/elesos/article/details/79278513
 第三方 收费方案  Zego
 https://blog.csdn.net/sinat_20146421/article/details/81814252
 
-Zego视频通话解决方案支持多人至百万人视频通话，满足语音视频社交、在线教育和培训、视频会议和远程医疗等场景，兼容iOS、Android、H5、Windows、macOS等环境。
-
-Zego视频通话解决方案主要优点
-
-1、超低延迟
-
-全球范围延迟100ms，跨国跨网毫无障碍;
-
-2、流畅不卡顿
-
-针对休闲或运动场景优化，保障音画同步且流畅;
-
-3、高清视频
-
-1080P高清画质，多种分辨率切换，自动适应网络状况;
-
-4、设备兼容
-
-深度优化的软件编解码技术，兼容5000+手机终端，支持硬件加速;
-
-5、全球覆盖
-
-全世界覆盖无死角，国内外覆盖无差别;
-
-6、码率自适应
-
-准确估算网络带宽，码率和分辨率能自动适应网络情况的变化进行调节。
+AnyRtc 国内产品
+https://www.anyrtc.io/
